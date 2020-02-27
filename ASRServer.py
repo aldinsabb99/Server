@@ -23,6 +23,7 @@ from DatabaseUser import DatabaseUser
 from DatabaseScore import DatabaseScore
 from CollectData import CollectData
 from Winnowing import Winnowing
+from DatabaseKunci import DatabaseKunci
 
 
 
@@ -211,7 +212,7 @@ class ASRServer(object):
     @cherrypy.expose
     def asr_julius(self,myFile,paramstring):
         body2 = paramstring
-        sen = DatabaseSentence.getSentence(body2)
+        sen = DatabaseKunci.getKunci(body2)
         # receive WAV file from client & write WAV file
         with open(ASR_FILEPATH + ASR_IN, 'wb') as f:
             f.write(myFile.file.read())
