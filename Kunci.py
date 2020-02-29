@@ -7,7 +7,7 @@ class Kunci():
 
 
     def to_dict_set(self):
-        return {"id": self.id, "sentence": self.kunci, "time": self.time}
+        return {"id": self.id, "kunci": self.kunci, "time": self.time}
 
     def display(self):
         print("id sentence = " + str(self.id))

@@ -214,6 +214,7 @@ class ASRServer(object):
         body2 = paramstring
         sen = DatabaseKunci.getKunci(body2)
         # receive WAV file from client & write WAV file
+
         with open(ASR_FILEPATH + ASR_IN, 'wb') as f:
             f.write(myFile.file.read())
         f.close()
@@ -243,10 +244,10 @@ class ASRServer(object):
             found = m.group(1)
         #sen = teks asli
         #found = teks hasil julius
-        score = Winnowing.accuracy_single(found,sen)
-        print(score)
         print("ini loh sen")
         print(sen)
+        score = Winnowing.accuracy_single(found,sen)
+        print(score)
         result_f = json.dumps({"asr_result": found, "winnowing_score":score})
         return result_f
 

@@ -45,7 +45,7 @@ class DatabaseKunci():
             mycursor = mydb.cursor()
 
             # fetch the sentence from database server
-            mycursor.execute(f"SELECT jap_sentence FROM kunci where id_kunci={id}")
+            mycursor.execute(f"SELECT jap_kunci FROM kunci where id_kunci={id}")
             myresult = mycursor.fetchall()
 
             for row in myresult:
@@ -79,7 +79,7 @@ class DatabaseKunci():
             mycursor = mydb.cursor()
 
             # fetch the sentence from database server
-            mycursor.execute(f"INSERT INTO kunci(jap_sentence) values (\"{kunci}\") ")
+            mycursor.execute(f"INSERT INTO kunci(jap_kunci) values (\"{kunci}\") ")
 
             mydb.commit()
             print("Record inserted successfully into python_users table")
@@ -104,7 +104,7 @@ class DatabaseKunci():
             mydb =connect()
             mycursor = mydb.cursor()
             # fetch the sentence from database server
-            mycursor.execute(f"DELETE FROM sentence WHERE  id_sentence=({id})")
+            mycursor.execute(f"DELETE FROM kunci WHERE  id_kunci=({id})")
 
             mydb.commit()
             print(f"Row with id={id} deleted successfully")
@@ -123,21 +123,21 @@ class DatabaseKunci():
             return result
 
     @classmethod
-    def getKunci(self,number):
+    def getKuncis(self,number):
         try:
             list_kunci = []
             mydb =connect()
             mycursor = mydb.cursor()
 
             # fetch the sentence from database server
-            mycursor.execute(f"SELECT id_sentence,jap_sentence,last_update FROM sentence ORDER BY id_sentence asc LIMIT {number} ")
+            mycursor.execute(f"SELECT id_kunci,jap_kunci,last_update FROM kunci ORDER BY id_kunci asc LIMIT {number} ")
             myresult = mycursor.fetchall()
 
             for row in myresult:
                 list_kunci.append(Kunci(row[0], row[1], row[2]))
 
-            json_listsentence = [obj.to_dict_set() for obj in list_kunci]
-            jsdata = json.dumps({"list_sentence": json_listsentence}, indent=4, sort_keys=True, default=str)
+            json_listkunci = [obj.to_dict_set() for obj in list_kunci]
+            jsdata = json.dumps({"list_sentence": json_listkunci}, indent=4, sort_keys=True, default=str)
             jsdataj = json.loads(jsdata)
             return jsdataj
 

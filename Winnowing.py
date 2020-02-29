@@ -46,12 +46,15 @@ class Winnowing:
 
     @classmethod
     def accuracy_single(self,text_b,text_a):
-        prep = Winnowing.preprocessing(text_a)
-        prep2 = Winnowing.preprocessing(text_b)
+        prep = Winnowing.preprocessing(text_b)
+        print ("ini kunci jawabannya : ")
+        print (text_a)
+        prep2 = Winnowing.preprocessing(text_a)
         winnowing = Winnowing.winnow(prep, 2, 2, 2)
         winnowing2 = Winnowing.winnow(prep2, 2, 2, 2)
         cosine_measure = Winnowing.cosine(winnowing, winnowing2)
         return cosine_measure
+
 
 
     @classmethod
