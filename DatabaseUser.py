@@ -89,8 +89,7 @@ class DatabaseUser:
             mycursor = mydb.cursor()
 
             # fetch the sentence from database server
-            mycursor.execute("INSERT INTO `user`(`name`, `username`, `password`) values ('%s', '%s', MD5('%s'))",(name, username, password))
-            print("udah sampe sini")
+            mycursor.execute("INSERT INTO `user`(`name`, `username`, `password`) VALUES (%s, %s, %s)",(name, username, password))
             mydb.commit()
             status="true"
 

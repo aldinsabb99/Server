@@ -6,7 +6,7 @@ class CollectData:
     def collect(self,id_data,id_sentence,id_user,sen_res,token_res_sur,token_res_pro,au_size,ex_time,sum_token_res,score):
         try:
             status = 'false'
-            mydb = mysql.connector.connect()
+            mydb = connect()
             mycursor = mydb.cursor()
 
             # fetch the sentence from database server
@@ -30,7 +30,7 @@ class CollectData:
     def getLastID(self):
         try:
             id = ""
-            mydb =  mysql.connector.connect()
+            mydb = connect()
             mycursor = mydb.cursor()
 
             # fetch the sentence from database server

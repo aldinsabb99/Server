@@ -1,6 +1,5 @@
 
 class Score:
-
     def __init__(self, id_user, id_score, score, sub_time):
         self.id_user = id_user
         self.id_score = id_score

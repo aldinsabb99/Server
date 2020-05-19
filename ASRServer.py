@@ -163,11 +163,13 @@ class ASRServer(object):
     @cherrypy.tools.json_in()
     @cherrypy.tools.json_out()
     def useradd(self):
-        print("udah sampe sini")
         input_json = cherrypy.request.json
         surename = input_json["surename"]
         username = input_json["username"]
         passw = input_json["password"]
+        print(surename)
+        print(username)
+        print(passw)
         try:
             DatabaseUser.adduser(surename, username, passw)
             user = DatabaseUser.getuser(username,passw)
@@ -183,6 +185,7 @@ class ASRServer(object):
     def get_scores(self):
         input_json = cherrypy.request.json
         id_user = input_json["id_user"]
+        print(id_user)
         try:
             result = DatabaseScore.getscores(id_user)
             print(result)
@@ -206,8 +209,6 @@ class ASRServer(object):
             result_f = json.dumps({"error": {"code": 404, "message": "Set Score Failed"}})
             result = json.loads(result_f)
         return result
-
-
 
     @cherrypy.expose
     def asr_julius(self,myFile,paramstring):

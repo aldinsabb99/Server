@@ -34,7 +34,6 @@ class DatabaseScore:
                 #print("MySQL connection is closed")
                 return jsdataj
 
-
     @classmethod
     def setscore(self,id_user, score):
         try:
@@ -85,11 +84,6 @@ class DatabaseScore:
                 mydb.close()
                 #print("MySQL connection is closed")
                 return jsdataj
-
-
-
-
-
 #print(DatabaseScore.getscores(1))
 #print(DatabaseScore.setscore(1,100))
 #print(DatabaseScore.getLastscore(2))

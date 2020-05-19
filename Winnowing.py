@@ -162,12 +162,12 @@ class Winnowing:
     # cosine similarity
     @classmethod
     def cosine(self,fingerprint1, fingerprint2):
-        num = len(set(fingerprint1).intersection(set(fingerprint2)))
-        denum = (len(set(fingerprint1)) ** .5) * (len(set(fingerprint2)) ** .5)
+        num = len(set(fingerprint1).intersection(set(fingerprint2))) # mencari banyaknya irisan
+        denum = (len(set(fingerprint1)) ** .5) * (len(set(fingerprint2)) ** .5) # di akar 5
         if denum == 0:
             cosine = 0.0
         else:
-            cosine = float(num / denum) * 100
+            cosine = float(num / denum) * 100 # tadinya 100
             if cosine > 100:
                 cosine = 100.0
         return cosine
